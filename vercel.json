@@ -2,14 +2,20 @@
   "version": 2,
   "builds": [
     {
-      "src": "public/index.html",
-      "use": "@vercel/static"
+      "src": "server.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "server.js"
+      "src": "/create-checkout-session",
+      "dest": "server.js",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/upload",
+      "dest": "server.js",
+      "methods": ["POST"]
     },
     {
       "src": "/(.*)",
