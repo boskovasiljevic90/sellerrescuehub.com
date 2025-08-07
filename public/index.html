@@ -1232,6 +1232,51 @@
     </div>
 
     <script>
+        // Initialize Stripe
+const stripe = Stripe('your_public_stripe_key');
+
+// Handle file uploads
+async function uploadFile(userId, file) {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('userId', userId);
+  
+  try {
+    const response = await fetch('/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Upload error:', error);
+  }
+}
+
+// Handle Stripe payments
+async function redirectToCheckout(priceId) {
+  const response = await fetch('/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ priceId })
+  });
+  
+  const { id } = await response.json();
+  await stripe.redirectToCheckout({ sessionId: id });
+}
+
+// Attach to existing buttons
+document.querySelectorAll('[data-plan]').forEach(button => {
+  button.addEventListener('click', () => {
+    const plan = button.getAttribute('data-plan');
+    const priceId = {
+      monthly: 'price_monthly_id',
+      annual: 'price_annual_id'
+    }[plan];
+    
+    redirectToCheckout(priceId);
+  });
+});
         // After the existing JavaScript
 
 // API integration for file upload
