@@ -1232,6 +1232,72 @@
     </div>
 
     <script>
+        // After the existing JavaScript
+
+// API integration for file upload
+async function analyzeReport(file, reportType, language) {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('reportType', reportType);
+  formData.append('language', language);
+  
+  try {
+    const response = await fetch('/api/analyze', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const data = await response.json();
+    return data.solutions;
+  } catch (error) {
+    console.error('Analysis error:', error);
+    return null;
+  }
+}
+
+// API integration for chat
+async function sendChatMessage(message, history) {
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, history })
+    });
+    
+    const data = await response.json();
+    return data.response;
+  } catch (error) {
+    console.error('Chat error:', error);
+    return "I'm having trouble connecting. Please try again later.";
+  }
+}
+
+// Update the chat function to use the API
+async function sendMessage() {
+  const message = chatInput.value.trim();
+  if (message) {
+    // Add user message
+    addMessage(message, 'user');
+    
+    // Clear input
+    chatInput.value = '';
+    
+    // Get chat history
+    const history = Array.from(chatMessages.querySelectorAll('.message')).map(msg => {
+      return {
+        role: msg.classList.contains('user') ? 'user' : 'assistant',
+        content: msg.querySelector('.message-content').textContent
+      };
+    });
+    
+    // Get AI response
+    const aiResponse = await sendChatMessage(message, history);
+    addMessage(aiResponse, 'bot');
+    
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+}
         // DOM Elements
         const scanModal = document.getElementById('scanModal');
         const closeScan = document.getElementById('closeScan');
