@@ -65,15 +65,19 @@
             text-decoration: none;
         }
         
-        .logo-icon {
-            background: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+        .logo-text {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .logo-text span:first-child {
+            font-weight: 700;
+        }
+        
+        .logo-text span:last-child {
+            font-weight: 800;
+            color: var(--secondary);
         }
         
         .nav-links {
@@ -353,6 +357,155 @@
             color: var(--dark);
         }
         
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            z-index: 1;
+        }
+        
+        .pricing-card.featured .featured-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .price span {
+            font-size: 1.2rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li i {
+            color: var(--success);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: #f1f5f9;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(37, 99, 235, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
         /* AI Agent Section */
         .ai-agent-section {
             padding: 100px 0;
@@ -398,6 +551,56 @@
         .lang-btn:hover, .lang-btn.active {
             background: white;
             color: var(--primary);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background: #f1f5f9;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px 30px;
+            max-height: 500px;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
         }
         
         /* Results Section */
@@ -837,14 +1040,15 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-life-ring"></i>
+                    <div class="logo-text">
+                        <span>Seller</span>
+                        <span>RescueHub</span>
                     </div>
-                    <span>SellerRescueHub</span>
                 </a>
                 <div class="nav-links">
                     <a href="#features">Features</a>
                     <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
                     <a href="#ai-agent">AI Agent</a>
                 </div>
                 <div class="nav-buttons">
@@ -952,6 +1156,112 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that works best for your business</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$19<span>/month</span></div>
+                    <p>Perfect for new sellers or those with basic needs</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 5 report scans per month</li>
+                        <li><i class="fas fa-check-circle"></i> Basic issue detection</li>
+                        <li><i class="fas fa-check-circle"></i> Standard solutions</li>
+                        <li><i class="fas fa-times-circle" style="color: var(--error);"></i> No AI chat support</li>
+                        <li><i class="fas fa-times-circle" style="color: var(--error);"></i> No priority processing</li>
+                    </ul>
+                    <button class="btn btn-outline">Get Started</button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <h3>Professional</h3>
+                    <div class="price">$49<span>/month</span></div>
+                    <p>Best for growing businesses and serious sellers</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Unlimited report scans</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced issue detection</li>
+                        <li><i class="fas fa-check-circle"></i> Detailed step-by-step solutions</li>
+                        <li><i class="fas fa-check-circle"></i> AI chat support (10 queries/month)</li>
+                        <li><i class="fas fa-check-circle"></i> Priority processing</li>
+                    </ul>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$99<span>/month</span></div>
+                    <p>For high-volume sellers and agencies</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Unlimited report scans</li>
+                        <li><i class="fas fa-check-circle"></i> Premium issue detection</li>
+                        <li><i class="fas fa-check-circle"></i> Custom solutions</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited AI chat support</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated account manager</li>
+                    </ul>
+                    <button class="btn btn-outline">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Join thousands of successful Amazon sellers using our AI agent</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>SellerRescueHub saved my business! Their AI identified inventory issues I completely missed. Implemented their solutions and saw a 35% sales increase in just one month.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Maria Johnson</h4>
+                            <p>Home & Kitchen Seller</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>The multilingual support is a game-changer! As a seller in 5 different marketplaces, getting solutions in each local language has dramatically improved my operations.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CT</div>
+                        <div class="author-info">
+                            <h4>Carlos Torres</h4>
+                            <p>Global Electronics Seller</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>I was skeptical about AI tools, but SellerRescueHub proved me wrong. It found advertising inefficiencies that were costing me $1,200/month. Paid for itself in 3 days!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SP</div>
+                        <div class="author-info">
+                            <h4>Sarah Peterson</h4>
+                            <p>Beauty Products Seller</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- AI Agent Section -->
     <section class="ai-agent-section" id="ai-agent">
         <div class="container">
@@ -991,14 +1301,14 @@
                     <p>See how our AI analyzes reports and generates solutions:</p>
                     
                     <div class="language-selector">
-                        <button class="lang-btn active">English</button>
-                        <button class="lang-btn">Spanish</button>
-                        <button class="lang-btn">French</button>
-                        <button class="lang-btn">German</button>
-                        <button class="lang-btn">Chinese</button>
-                        <button class="lang-btn">Arabic</button>
-                        <button class="lang-btn">Hindi</button>
-                        <button class="lang-btn">Russian</button>
+                        <button class="lang-btn active" data-lang="en">English</button>
+                        <button class="lang-btn" data-lang="es">Spanish</button>
+                        <button class="lang-btn" data-lang="fr">French</button>
+                        <button class="lang-btn" data-lang="de">German</button>
+                        <button class="lang-btn" data-lang="zh">Chinese</button>
+                        <button class="lang-btn" data-lang="ar">Arabic</button>
+                        <button class="lang-btn" data-lang="hi">Hindi</button>
+                        <button class="lang-btn" data-lang="ru">Russian</button>
                     </div>
                     
                     <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; margin-top: 20px;">
@@ -1016,13 +1326,75 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 30px; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 20px;">
+                    <div id="demoResults" style="margin-top: 30px; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 20px;">
                         <h4>Detected Issues:</h4>
                         <ul style="margin-top: 10px; padding-left: 20px;">
                             <li>Low inventory for top-selling products</li>
                             <li>High return rate on new product line</li>
                             <li>Underperforming advertising campaigns</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about SellerRescueHub</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does the AI agent analyze my Amazon reports?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI uses advanced machine learning algorithms trained on millions of Amazon seller data points. It scans your reports for patterns, anomalies, and performance metrics to identify issues across inventory, pricing, advertising, and compliance areas.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What languages does the AI support?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI supports all major languages including English, Spanish, French, German, Chinese, Arabic, Hindi, Russian, Japanese, Portuguese, and Italian. Solutions are generated in your preferred language with industry-specific terminology.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How secure is my Amazon data?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We prioritize data security with bank-level encryption, strict access controls, and compliance with GDPR and CCPA regulations. Your data is never shared with third parties and is automatically deleted after 30 days unless you choose to store it.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I try before I buy?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer a free trial with limited scans so you can experience the power of our AI agent. No credit card required. Simply upload a report to get started with your free analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How often should I run reports through the AI?
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We recommend weekly scans for active sellers. For high-volume sellers ($100k+/month), daily scans provide the most value. Our AI tracks changes over time to identify emerging issues before they become problems.</p>
                     </div>
                 </div>
             </div>
@@ -1085,10 +1457,10 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <a href="#" class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-life-ring"></i>
+                        <div class="logo-text" style="color: white;">
+                            <span>Seller</span>
+                            <span>RescueHub</span>
                         </div>
-                        <span>SellerRescueHub</span>
                     </a>
                     <p style="margin: 20px 0; color: #cbd5e1;">The ultimate AI solution for Amazon sellers worldwide. Solve any problem, in any language.</p>
                     <div class="social-links">
@@ -1104,6 +1476,7 @@
                     <ul class="footer-links">
                         <li><a href="#how-it-works">How It Works</a></li>
                         <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#ai-agent">AI Agent</a></li>
                     </ul>
                 </div>
@@ -1114,6 +1487,7 @@
                         <li><a href="#">Help Center</a></li>
                         <li><a href="#">Amazon Seller Blog</a></li>
                         <li><a href="#">Report Templates</a></li>
+                        <li><a href="#faq">FAQs</a></li>
                     </ul>
                 </div>
                 
@@ -1123,6 +1497,7 @@
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -1186,6 +1561,38 @@
         </div>
     </div>
 
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeLogin">&times;</span>
+            <h2 class="modal-title">Log In to Your Account</h2>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="you@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="••••••••">
+            </div>
+            
+            <div style="margin: 20px 0; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a href="#" style="color: var(--primary);">Forgot password?</a>
+            </div>
+            
+            <button class="btn btn-primary" style="width: 100%;">Log In</button>
+            
+            <p style="text-align: center; margin-top: 20px;">
+                Don't have an account? <a href="#" style="color: var(--primary); font-weight: 600;">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
     <!-- AI Live Chat Widget -->
     <div class="chat-widget">
         <div class="chat-icon" id="chatIcon">
@@ -1232,127 +1639,20 @@
     </div>
 
     <script>
-        // Initialize Stripe
-const stripe = Stripe('your_public_stripe_key');
-
-// Handle file uploads
-async function uploadFile(userId, file) {
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('userId', userId);
-  
-  try {
-    const response = await fetch('/upload', {
-      method: 'POST',
-      body: formData
-    });
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error('Upload error:', error);
-  }
-}
-
-// Handle Stripe payments
-async function redirectToCheckout(priceId) {
-  const response = await fetch('/create-checkout-session', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ priceId })
-  });
-  
-  const { id } = await response.json();
-  await stripe.redirectToCheckout({ sessionId: id });
-}
-
-// Attach to existing buttons
-document.querySelectorAll('[data-plan]').forEach(button => {
-  button.addEventListener('click', () => {
-    const plan = button.getAttribute('data-plan');
-    const priceId = {
-      monthly: 'price_monthly_id',
-      annual: 'price_annual_id'
-    }[plan];
-    
-    redirectToCheckout(priceId);
-  });
-});
-        // After the existing JavaScript
-
-// API integration for file upload
-async function analyzeReport(file, reportType, language) {
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('reportType', reportType);
-  formData.append('language', language);
-  
-  try {
-    const response = await fetch('/api/analyze', {
-      method: 'POST',
-      body: formData
-    });
-    
-    const data = await response.json();
-    return data.solutions;
-  } catch (error) {
-    console.error('Analysis error:', error);
-    return null;
-  }
-}
-
-// API integration for chat
-async function sendChatMessage(message, history) {
-  try {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, history })
-    });
-    
-    const data = await response.json();
-    return data.response;
-  } catch (error) {
-    console.error('Chat error:', error);
-    return "I'm having trouble connecting. Please try again later.";
-  }
-}
-
-// Update the chat function to use the API
-async function sendMessage() {
-  const message = chatInput.value.trim();
-  if (message) {
-    // Add user message
-    addMessage(message, 'user');
-    
-    // Clear input
-    chatInput.value = '';
-    
-    // Get chat history
-    const history = Array.from(chatMessages.querySelectorAll('.message')).map(msg => {
-      return {
-        role: msg.classList.contains('user') ? 'user' : 'assistant',
-        content: msg.querySelector('.message-content').textContent
-      };
-    });
-    
-    // Get AI response
-    const aiResponse = await sendChatMessage(message, history);
-    addMessage(aiResponse, 'bot');
-    
-    // Scroll to bottom
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-}
         // DOM Elements
         const scanModal = document.getElementById('scanModal');
+        const loginModal = document.getElementById('loginModal');
         const closeScan = document.getElementById('closeScan');
+        const closeLogin = document.getElementById('closeLogin');
         const browseBtn = document.getElementById('browseBtn');
         const fileInput = document.getElementById('fileInput');
         const dropZone = document.getElementById('dropZone');
-        const scanBtns = document.querySelectorAll('#scanBtn, #heroScanBtn, #sectionScanBtn');
+        const scanBtns = document.querySelectorAll('#scanBtn, #heroScanBtn, #sectionScanBtn, #dashboardBtn');
+        const loginBtn = document.getElementById('loginBtn');
         const resultsSection = document.getElementById('results');
         const newReportBtn = document.getElementById('newReportBtn');
         const langBtns = document.querySelectorAll('.lang-btn');
+        const faqItems = document.querySelectorAll('.faq-item');
         
         // Chat elements
         const chatIcon = document.getElementById('chatIcon');
@@ -1362,6 +1662,66 @@ async function sendMessage() {
         const chatInput = document.getElementById('chatInput');
         const sendButton = document.getElementById('sendButton');
         
+        // Language demo content
+        const demoContent = {
+            en: {
+                issues: [
+                    "Low inventory for top-selling products",
+                    "High return rate on new product line",
+                    "Underperforming advertising campaigns"
+                ]
+            },
+            es: {
+                issues: [
+                    "Inventario bajo para productos más vendidos",
+                    "Alta tasa de devoluciones en nueva línea de productos",
+                    "Campañas publicitarias de bajo rendimiento"
+                ]
+            },
+            fr: {
+                issues: [
+                    "Stock faible pour les produits les plus vendus",
+                    "Taux de retour élevé sur la nouvelle gamme de produits",
+                    "Campagnes publicitaires sous-performantes"
+                ]
+            },
+            de: {
+                issues: [
+                    "Geringer Lagerbestand für Bestseller",
+                    "Hohe Rückgabequote bei neuer Produktlinie",
+                    "Unterdurchschnittliche Werbekampagnen"
+                ]
+            },
+            zh: {
+                issues: [
+                    "畅销产品库存不足",
+                    "新产品线退货率高",
+                    "广告活动表现不佳"
+                ]
+            },
+            ar: {
+                issues: [
+                    "مخزون منخفض للمنتجات الأكثر مبيعًا",
+                    "معدل مرتفع للإرجاع في خط المنتجات الجديد",
+                    "حملات إعلانية ضعيفة الأداء"
+                ]
+            },
+            hi: {
+                issues: [
+                    "शीर्ष बिकने वाले उत्पादों के लिए कम स्टॉक",
+                    "नए उत्पाद लाइन पर उच्च वापसी दर",
+                    "अंडरपरफॉर्मिंग विज्ञापन अभियान"
+                ]
+            },
+            ru: {
+                issues: [
+                    "Низкий запас самых продаваемых товаров",
+                    "Высокий уровень возвратов новой линейки продуктов",
+                    "Низкоэффективные рекламные кампании"
+                ]
+            }
+        };
+
         // Event Listeners
         scanBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1369,7 +1729,12 @@ async function sendMessage() {
             });
         });
         
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+        
         closeScan.addEventListener('click', () => scanModal.style.display = 'none');
+        closeLogin.addEventListener('click', () => loginModal.style.display = 'none');
         browseBtn.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', handleFileUpload);
         newReportBtn.addEventListener('click', () => {
@@ -1381,6 +1746,14 @@ async function sendMessage() {
             btn.addEventListener('click', () => {
                 langBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+                updateDemoContent(btn.dataset.lang);
+            });
+        });
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
             });
         });
         
@@ -1453,6 +1826,19 @@ async function sendMessage() {
             }, 300);
         }
         
+        // Update demo content based on language
+        function updateDemoContent(lang) {
+            const demoResults = document.getElementById('demoResults');
+            const content = demoContent[lang] || demoContent.en;
+            
+            demoResults.innerHTML = `
+                <h4>${lang === 'en' ? 'Detected Issues:' : 'Problemas detectados:'}</h4>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    ${content.issues.map(issue => `<li>${issue}</li>`).join('')}
+                </ul>
+            `;
+        }
+        
         // Drag and drop for file upload
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
@@ -1476,6 +1862,7 @@ async function sendMessage() {
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
             if (e.target === scanModal) scanModal.style.display = 'none';
+            if (e.target === loginModal) loginModal.style.display = 'none';
         });
         
         // Smooth scrolling for navigation links
@@ -1511,7 +1898,7 @@ async function sendMessage() {
             });
         }, observerOptions);
         
-        document.querySelectorAll('.feature-card, .step').forEach(el => {
+        document.querySelectorAll('.feature-card, .step, .pricing-card, .testimonial-card').forEach(el => {
             observer.observe(el);
         });
         
