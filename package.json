@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "build": "your-build-command" // e.g.,"react-scripts build"
+    "build": "your-build-command"
   }
 }
