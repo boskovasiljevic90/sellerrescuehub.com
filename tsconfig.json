@@ -17,7 +17,7 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"]
-      "@/auth": ["auth"],
+      "@/auth": ["auth"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
