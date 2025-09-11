@@ -4,8 +4,7 @@ import { auth } from "@/auth";
 export async function Header() {
 const session = await auth();
 return (
-2
-<header className="sticky top-0 z-40 border-b bg-white/70 backdrop-blur">
+  <header className="sticky top-0 z-40 border-b bg-white/70 backdrop-blur">
 <div className="mx-auto flex max-w-6xl items-center justify-between px-6
 py-3">
 <Link href="/" className="flex items-center gap-2">
